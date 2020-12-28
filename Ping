@@ -1,0 +1,7 @@
+@echo off
+:Inicio
+set dirip=
+set /p dirip="ping "
+ping %dirip%
+set /p mas=Mas (s/n)?
+if %mas% == s goto :inicio
