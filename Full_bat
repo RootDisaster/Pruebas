@@ -1,0 +1,134 @@
+//complete3
+
+@echo off
+:start
+cls
+echo ***********************************************************
+echo ***                    Herramienta desarrollada por     ***
+echo ***                       Felipe Cabrera Salinas	***
+echo ***                      Santiago 16 agosto 2016.	***
+echo ***********************************************************
+echo.
+echo Escoge la opcion que necesitas :			     
+echo.
+echo  	1- Eliminar temporales de Windows                    
+echo  	2- Eliminar prefetch
+echo  	3- Eliminar cookies y temporales de internet
+echo  	4- Eliminar las contrasenas almacenadas en IExplorer
+echo  	5- Eliminar el historial de IExplorer
+echo  	6- Ver contrasenas almacenadas en sistema
+echo  	7- Politicas
+echo  	8- Desinstalar IExplorer 8
+echo  	9- Borra todo
+echo  	0- Salir.
+echo.
+
+set/p VALOR=Escribe el numero determinado y pulsa ENTER :
+if %VALOR%== 0 goto SALIR
+if %VALOR%== 1 goto TEMP
+if %VALOR%== 2 goto PREFE
+if %VALOR%== 3 goto TEMPOR1
+if %VALOR%== 4 goto CONTRA
+if %VALOR%== 5 goto HISTORIAL
+if %VALOR%== 6 goto ALMACE
+if %VALOR%== 7 goto POLICI
+if %VALOR%== 8 goto ELIMIE8
+if %VALOR%== 9 goto todo
+if %VALOR% GTR 7 echo Error esa opcion no existe
+pause
+goto start
+pause>nul
+:TEMP
+cd c:
+cd TEMP
+del c:\temp /s /q
+del c:\windows\temp /s /q
+TASKKILL /F /IM explorer.exe
+DEL /F /S /Q %TEMP%
+timeout /nobreak 04
+start explorer.exe
+msg * Limpieza de temporales de Windows completa.
+goto start
+:PREFE
+TASKKILL /F /IM explorer.exe
+DEL /F /S /Q C:\Windows\Prefetch
+timeout /nobreak 04
+start explorer.exe
+del c:\windows\prefetch /s /q
+msg * Limpieza de prefetch completa.
+goto start
+:TEMPOR1
+msg * Favor cierre Internet explorer para una limpieza completa 
+PAUSE
+goto TEMPOR
+:TEMPOR
+del "c:\Documents and Settings\%username%\cookies\"*.* /s /q
+cd d:
+del "d:\mis documentos\cache" /s /q
+attrib -h -s "%userprofile%\CONFIG~1"
+attrib -h -s "%userprofile%\CONFIG~1\Archivos temporales de Internet"
+attrib -h -s "%userprofile%\CONFIG~1\Archivos temporales de Internet\Content.IE5"
+del /S /Q /F %temp%\*.*
+del /S /Q /F "%userprofile%\CONFIG~1\Archivos temporales de Internet\Content.IE5"\*.*
+del /S /Q /F -index.dat "%userprofile%\CONFIG~1\Archivos temporales de Internet\Content.IE5"
+del /S /Q /F "%userprofile%\CONFIG~1\Archivos temporales de Internet"\*.*
+del /S /Q /F "%systemroot%\Temp"\*.*
+del /S /Q /F "C:\Temp"\*.*
+attrib +h +s "%userprofile%\CONFIG~1\Archivos temporales de Internet\Content.IE5"
+attrib +h +s "%userprofile%\CONFIG~1\Archivos temporales de Internet"
+attrib +h +s "%userprofile%\CONFIG~1"
+msg * Limpieza cookies y temporales de Internet completa.
+goto start
+:CONTRA
+start RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 32
+msg * Limpieza de contrasenas de internet completa.
+goto start
+:HISTORIAL
+start RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 1
+msg * Limpieza de historial de Iexplorer completa.
+goto start
+:ALMACE
+start rundll32.exe keymgr.dll, KRShowKeyMgr
+goto start
+:POLICI
+Reg delete HKEY_current_user\software\microsoft\windows\currentversion\policies /f
+Reg delete HKEY_CURRENT_USER\Software\Policies /f
+msg * Policies Down
+goto start
+:ELIMIE8
+start %windir%\ie8\spuninst\spuninst.exe
+goto start
+:todo
+TASKKILL /F /IM explorer.exe
+del c:\windows\temp /s /q
+DEL /F /S /Q %TEMP%
+timeout /nobreak 04
+del c:\windows\prefetch /s /q
+del "c:\Documents and Settings\%username%\cookies\"*.* /s /q
+cd d:
+del "d:\mis documentos\cache" /s /q
+attrib -h -s "%userprofile%\CONFIG~1"
+attrib -h -s "%userprofile%\CONFIG~1\Archivos temporales de Internet"
+attrib -h -s "%userprofile%\CONFIG~1\Archivos temporales de Internet\Content.IE5"
+del /S /Q /F %temp%\*.*
+del /S /Q /F "%userprofile%\CONFIG~1\Archivos temporales de Internet\Content.IE5"\*.*
+del /S /Q /F -index.dat "%userprofile%\CONFIG~1\Archivos temporales de Internet\Content.IE5"
+del /S /Q /F "%userprofile%\CONFIG~1\Archivos temporales de Internet"\*.*
+del /S /Q /F "%systemroot%\Temp"\*.*
+del /S /Q /F "C:\Temp"\*.*
+attrib +h +s "%userprofile%\CONFIG~1\Archivos temporales de Internet\Content.IE5"
+attrib +h +s "%userprofile%\CONFIG~1\Archivos temporales de Internet"
+attrib +h +s "%userprofile%\CONFIG~1"
+start RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 32
+start RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 1
+start rundll32.exe keymgr.dll, KRShowKeyMgr
+DEL /F /S /Q %TEMP%
+timeout /nobreak 04
+start explorer.exe
+msg * Limpieza  completada.
+goto start
+:SALIR
+EXIT
+
+
+//
