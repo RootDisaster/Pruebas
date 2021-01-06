@@ -1,0 +1,3 @@
+@echo off
+ipconfig|FINDSTR "Dirección IPv4"
+pause
