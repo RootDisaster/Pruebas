@@ -15,3 +15,37 @@ ipconfig /flushdns
 win 
 89DJV-FVKQQ-QHMDJ-9XQD6-XPFTR
 FC7HF-CF42G-MX6D7-8K9T7-BT9QT
+*************************************
+
+
+Comandos utilies
+msconfig --> desactivar progrmas de inicio de win
+title + (nombre deseado) ----> identificar ventanas cmd
+ver_ version de SO
+wusa
+mmc
+gpdit
+control desk.cpl,,@screensaver -- protector de pantalla
+
+ipconfig /release
+ipconfig /renew
+ipconfig /registerdns
+ipconfig /flushdns
+
+Access 2007
+WMJV2-KXMX7-GVCJW-B4G7M-WXX38
+Oficce 2010
+MBHCH-F3Y7C-7TMHH-D4V79-XF2RD
+2016
+JVNTP-KTTFQ-D8PVG-HTC3M-XBVB2
+w7
+GCQH7-YKP7Y-TMXHT-J2QTF-WHTPK
+
+-
+
+comando para licencias microsoft
+
+wmic patch softwarelicensingservice get 0aBXorigi
+cs
+forteclient, se puede ingresar con cualquier cuenta CS
+https://200.14.252.164/remote/login?lang=en
