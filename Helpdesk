@@ -1,0 +1,6 @@
+@echo off
+echo *********Asistencia soporte ***
+echo *********Anexos de servicio  *
+ipconfig|FINDSTR "Dirección IPv4"
+echo    Nombre del equipo. . . . . . . . . . . . . : %COMPUTERNAME% 
+pause
