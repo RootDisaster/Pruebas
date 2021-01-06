@@ -49,3 +49,13 @@ wmic patch softwarelicensingservice get 0aBXorigi
 cs
 forteclient, se puede ingresar con cualquier cuenta CS
 https://200.14.252.164/remote/login?lang=en
+********************************************************
+
+
+C:\Windows\System32\runas.exe /user:administrador /savedcred "C:\Program Files (x86)\ZKTeco\Att.exe"
+
+
+cambiar de privilegio una aplicación.
+
+
+C:\Windows\System32\runas.exe /user:fcabrera\administrador /savedcred "C:\Program Files (x86)\ZKTeco\Att.exe"
